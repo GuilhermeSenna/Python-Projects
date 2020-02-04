@@ -64,7 +64,7 @@ bulletImg = pygame.image.load('bullet.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
-bulletY_change = 4
+bulletY_change = 1
 bullet_state = 'ready'
 
 # Tempo de duração do bônus
