@@ -15,7 +15,7 @@ from functions import screen_size
 pygame.init()
 
 # create the screen
-screen = screen_size(1000, 600)
+screen = screen_size(800, 600)
 
 # Background
 background = pygame.image.load('background.png').convert()

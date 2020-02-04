@@ -1,2 +1,2 @@
 # Python-Projects
-My projects in Python
+Projects created or changed by me
