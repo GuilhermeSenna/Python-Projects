@@ -1,15 +1,14 @@
 # Objetivos
 # Movimento de fundo
-# Animação ao inimigo morrer
 # Animação ao perder
-# Adicionar Bônus
+# Adicionar Bônus (Velocidade adicionado, falta + munição e - velocidade dos inimigos)
+# Novos inimigos, tiro vertical e tiro direcionado ao jogador
+# Sistema de pontuações
 
-import time
 import pygame
-import math
 import random
 from pygame import mixer
-from functions import screen_size
+from functions import screen_size, background, distance_between_two_points
 
 # Initialize the pygame
 pygame.init()
@@ -18,7 +17,7 @@ pygame.init()
 screen = screen_size(800, 600)
 
 # Background
-background = pygame.image.load('background.png').convert()
+Background = background('background.png')
 
 # Background Sound
 mixer.music.load('background.wav')
@@ -65,7 +64,7 @@ bulletImg = pygame.image.load('bullet.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
-bulletY_change = 1
+bulletY_change = 4
 bullet_state = 'ready'
 
 # Tempo de duração do bônus
@@ -123,27 +122,30 @@ def fire_bullet(x, y):
     screen.blit(bulletImg, (x + 16, y + 10))
 
 
-def isCollision(enemyX, enemyY, bulletX, bulletY):
-    distance = math.sqrt((enemyX - bulletX) ** 2 + (enemyY - bulletY) ** 2)
-    if distance < 27:
-        return True
-    else:
-        return False
+def create_new_enemy(num_enemies):
+    num_enemies += 1
+    enemyImg.append(pygame.image.load('enemy.png'))
+    enemyX.append(random.randint(0, 735))
+    enemyY.append(random.randint(50, 150))
+    enemyX_change.append(0.5)
+    enemyY_change.append(40)
+    time_explosion.append(301)
+    explosionX.append(0)
+    explosionY.append(0)
+    return num_enemies
 
 
-def isTouch(bonusX, bonusY, playerX, playerY):
-    distance = math.sqrt((bonusX - playerX) ** 2 + (bonusY - playerY) ** 2)
-    if distance < 27:
-        return True
-    else:
-        return False
-
-
-# Game Loop
 bonusX = 0
 bonusY = 0
+# 1 segundo ~= 380/400 counts
 
+seg = 400
+
+
+ant = 0
 running = True
+# Game Loop
+new_enemyX_change = 0.5
 while running:
     '''if pygame.time.get_ticks() // 1000 == count:
         print(f'Passou-se {pygame.time.get_ticks() // 1000} segundos.')
@@ -152,7 +154,7 @@ while running:
     # RGB - Red, Green, Blue
     screen.fill((0, 0, 0))
     # Background Image
-    screen.blit(background, (0, 0))
+    screen.blit(Background, (0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -195,14 +197,14 @@ while running:
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
-            enemyX_change[i] = 0.5
+            enemyX_change[i] = new_enemyX_change
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] >= 736:
-            enemyX_change[i] = -0.5
+            enemyX_change[i] = -new_enemyX_change
             enemyY[i] += enemyY_change[i]
 
         # Collision
-        collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
+        collision = distance_between_two_points(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
             escolha = random.choice(['Nothing', 'Nothing', 'Speed', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing'])
             if escolha is 'Speed' and bonus_state is 'out':
@@ -222,6 +224,21 @@ while running:
 
         enemy(enemyX[i], enemyY[i], i)
 
+    # Aumenta dificuldade
+    if score_value % 5 == 0 and score_value != 0: # Aumenta 1 inimigo
+        if ant != score_value:
+            num_of_enemies = create_new_enemy(num_of_enemies)
+            if score_value % 10 == 0: # Aumenta velocidade dos inimigos
+                for c in range(num_of_enemies):
+                    new_enemyX_change += 0.05
+                    if enemyX_change[c] < 0:
+                        enemyX_change[c] = -new_enemyX_change
+                    else:
+                        enemyX_change[c] = new_enemyX_change
+            ant = score_value
+
+    print(num_of_enemies)
+
     # Se o bonus esta caindo
     if bonus_state is 'in':
         bonusY += 0.2
@@ -230,27 +247,23 @@ while running:
         if bonusY >= 600:
             bonus_state = 'out'
 
-
     # Player toca no bonus
-    touch = isTouch(bonusX, bonusY, playerX, playerY)
+    touch = distance_between_two_points(bonusX, bonusY, playerX, playerY)
     if touch:
-        time_bonus = 0
+        time_bonus = 15*seg
         if bulletY_change < 4:
             bulletY_change *= 2
         bonusY = 600
         bonus_state = 'out'
 
-    if time_bonus < 6000:
-        time_bonus += 1
+    if time_bonus > 0:
+        time_bonus -= 1
     else:
         if bulletY_change == 4:
             bulletY_change = 2
-            time_bonus = 0
+            time_bonus = 15*seg
         elif bulletY_change == 2:
             bulletY_change = 1
-
-    print(bulletY_change)
-
 
     # Efeito de explosao
     for j in range(num_of_enemies):
