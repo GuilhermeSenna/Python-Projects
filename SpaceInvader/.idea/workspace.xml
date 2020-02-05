@@ -42,7 +42,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Huffman teste">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Huffman teste" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SpaceInvader" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -108,8 +108,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Huffman teste" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.Huffman teste" />
         <item itemvalue="Python.teste" />
       </list>
     </recent_temporary>
