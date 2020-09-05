@@ -1,4 +1,4 @@
-<h1>OMais de 100 exercícios resolvidos de Python</h1>
+<h1>Mais de 100 exercícios resolvidos de Python</h1>
 
 Exercícios feitos em Python da série de exercícios promovidos no youtube pelo professor Guanabara (Canal: Curso em Vídeo, BR). Estes foram feitos entre maio e Junho de 2019. Não garanto que eles funcionem 100% nem que tenham a melhor implementação possível.
 
