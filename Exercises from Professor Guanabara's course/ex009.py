@@ -1,0 +1,6 @@
+n = int(input('Digite um valor a ser usado na tabuada (de 0 a 10 de preferencia)= '))
+print(f'O valor usado foi {n}')
+print('|||||||||||||Tabuada da soma|||||||||||||')
+print(f'{n}+1 = {n+1}\n{n}+2 = {n+2}\n{n}+3 = {n+3}\n{n}+4 = {n+4}\n{n}+5 = {n+5}\n{n}+6 = {n+6}\n{n}+7 = {n+7}\n{n}+8 = {n+8}\n{n}+9 = {n+9} ')
+print('|||||||||||||Tabuada da multiplicação|||||||||||||')
+print(f'{n}*1 = {n*1}\n{n}*2 = {n*2}\n{n}*3 = {n*3}\n{n}*4 = {n*4}\n{n}*5 = {n*5}\n{n}*6 = {n*6}\n{n}*7 = {n*7}\n{n}*8 = {n*8}\n{n}*9 = {n*9} ')
