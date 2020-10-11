@@ -30,7 +30,7 @@ def decodificar(alfabeto, arquivo):
         print(f'{k+1}-> {v}')
 
 
-#Prorama principal
+#Programa principal
 alfabeto = 'abcdefghijklmnopqrstuvwxyz'
 arquivo = 'teste.txt'
 
