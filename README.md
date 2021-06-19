@@ -16,8 +16,8 @@ Ainda possui alguns problemas envolvidos como:
 
 Ainda há um custo computacional alto envolvido, falta algumas revisões para melhorar essa lógica e tornar o programa funcional
 
-# Commits antigos do programa:
-# https://github.com/GuilhermeSenna/InterfaceScrape/commits/main
+## Commits antigos do programa:
+**https://github.com/GuilhermeSenna/InterfaceScrape/commits/main**
 
 ## Programa introdutório para IA = 14/06/2021
 - Lê de um arquivo CSV
