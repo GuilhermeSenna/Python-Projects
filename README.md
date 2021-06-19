@@ -35,7 +35,7 @@ Ainda há um custo computacional alto envolvido, falta algumas revisões para me
 - Pega todas os índices das ocorrências na lista que não correspondem a desejada.
 - Retira do dicionário, permitindo uma forma de enxergar as regras
  
- ## Novo .csv para testes = 14/06/2021 (TARDE)
+ ## Novo .csv para testes = 14/06/2021
  
 ## Lógica incompleta para gerar regras = 14/06/2021
 - Gera regras incompletas
@@ -48,7 +48,7 @@ Ainda há um custo computacional alto envolvido, falta algumas revisões para me
 
 ## Outras tentativas de corrigir o problema = 15/06/2021
 
-## Gerando regras retirando colunas manualmente = 15/06/2021 (NOITE)
+## Gerando regras retirando colunas manualmente = 15/06/2021
 - Agora funciona a remoção de regras ambiguas e inuteis
 - Falta incorporar para funcionar em loop
 
