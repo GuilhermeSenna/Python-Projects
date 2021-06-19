@@ -14,7 +14,9 @@ Ainda possui alguns problemas envolvidos como:
 - Colunas do dataset com valores iguais gerará problemas
 - Falta validar regras acima da mais baixa
 
-Ainda há um custo computacional alto envolvido, falta algumas revisões para melhorar essa lógica e tornar o programa funcional
+Ainda há um custo computacional alto envolvido, falta algumas revisões para melhorar essa lógica e tornar o programa completamente funcional.
+
+Resultado final em 18/06/2021: Gera regras certas e algumas poucas erradas mesmo após algumas validações.
 
 ## Commits antigos do programa:
 **https://github.com/GuilhermeSenna/InterfaceScrape/commits/main**
