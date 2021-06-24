@@ -1,6 +1,6 @@
 # "teste IA.py"
 
-- Programa teste criado para IA
+- Programa teste criado para Inteligência Artificial
 - Programa baseado em outro já feito chamado "PRISM"
 - É um sistema RULE BASED
 - Apriori era para ser um programa que se enquadra em Machine Learning mas está mais para Deep Learning no momento
